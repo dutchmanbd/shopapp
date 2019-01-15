@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:shopapp/model/Product.dart';
 import 'package:shopapp/pages/product_details.dart';
 
@@ -21,18 +22,18 @@ class _ProductsState extends State<Products> {
         oldPrice: 120.0,
         price: 85.0
     ),
-    Product(
-        name: "Blazer",
-        picture: "assets/images/products/blazer2.jpeg",
-        oldPrice: 125.0,
-        price: 95.0
-    ),
-    Product(
-        name: "Red dress",
-        picture: "assets/images/products/dress2.jpeg",
-        oldPrice: 110.0,
-        price: 90.0
-    )
+//    Product(
+//        name: "Blazer",
+//        picture: "assets/images/products/blazer2.jpeg",
+//        oldPrice: 125.0,
+//        price: 95.0
+//    ),
+//    Product(
+//        name: "Red dress",
+//        picture: "assets/images/products/dress2.jpeg",
+//        oldPrice: 110.0,
+//        price: 90.0
+//    )
   ];
   @override
   Widget build(BuildContext context) {
@@ -61,11 +62,13 @@ class SingleProduct extends StatelessWidget {
     return Container(
       child: Card(
         child: Hero(
-            tag: product.name,
+            tag: "${product.name}",
             child: Material(
               child: InkWell(
                 onTap: ()=> Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => ProductDetails())),
+                    builder: (context) => new ProductDetails(
+                      product: product,
+                    ))),
                 child: GridTile(
                     footer: Container(
                       color: Colors.white70,
